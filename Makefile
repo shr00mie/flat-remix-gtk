@@ -13,6 +13,10 @@ build:
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/share/themes
+	# Remove existing theme dirs first (avoids cp failures over stale trees).
+	for theme in $(THEMES); do \
+		rm -rf "$(DESTDIR)$(PREFIX)/share/themes/$$theme"; \
+	done
 	cp -a $(foreach theme,$(THEMES),themes/$(theme)) $(DESTDIR)$(PREFIX)/share/themes
 
 uninstall:

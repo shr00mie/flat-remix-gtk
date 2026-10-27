@@ -1,4 +1,4 @@
-@define-color accent_bg_color #2777ff;
+@define-color accent_bg_color #737680;
 @define-color accent_fg_color #ffffff;
 @define-color accent_color @accent_bg_color;
 @define-color destructive_bg_color @red_4;
@@ -2454,7 +2454,7 @@ button.link {
     color: mix(@accent_color,@view_fg_color,0.2); }
   link:hover,
   button.link:hover {
-    color: shade(@accent_color,1.1); }
+    color: mix(white, @accent_color, 0.1); }
   link:active,
   button.link:active {
     color: @accent_color; }
@@ -4967,12 +4967,12 @@ window.ssd {
 
 /* Only normal state is handle */
 .open-document-selector-match {
-    color: shade (@theme_fg_color, 0.6);
+    color: mix(black, @theme_fg_color, 0.4);
     background-color: alpha(@warning_color, 0.4);
 }
 
 .gedit-document-panel {
-    background-color: @sidebar_bg;
+    background-color: @sidebar_bg_color;
 }
 
 .gedit-document-panel:backdrop {
@@ -5027,7 +5027,7 @@ statusbar {
 .gedit-search-entry-occurrences-tag {
     background-color: @theme_base_color;
     background-image: none;
-    color: shade (@theme_unfocused_fg_color, 0.8);
+    color: mix(black, @theme_unfocused_fg_color, 0.2);
     border: 0px;
     margin: 2px;
     padding: 2px;
@@ -5054,11 +5054,11 @@ statusbar {
 }
 
 .nautilus-canvas-item.dim-label {
-    color: mix (@theme_fg_color, @theme_bg_color, 0.50);
+    color: mix(@theme_fg_color, @theme_bg_color, 0.50);
 }
 
 .nautilus-canvas-item.dim-label:selected {
-    color: mix (@theme_selected_fg_color, @theme_selected_bg_color, 0.20);
+    color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.20);
 }
 
 /* Toolbar */
@@ -5196,29 +5196,29 @@ entry.search > * {
 
 .disk-space-display.unknown {
     background-color: @disk_space_unknown;
-    border-color: shade(@disk_space_unknown, 0.7);
+    border-color: mix(black, @disk_space_unknown, 0.3);
     color: @disk_space_unknown;
 }
 .disk-space-display.unknown.border {
-    color: shade(@disk_space_unknown, 0.7);
+    color: mix(black, @disk_space_unknown, 0.3);
 }
 
 .disk-space-display.used {
     background-color: @disk_space_used;
-    border-color: shade(@disk_space_used, 0.7);
+    border-color: mix(black, @disk_space_used, 0.3);
     color: @disk_space_used;
 }
 .disk-space-display.used.border {
-    color: shade(@disk_space_used, 0.7);
+    color: mix(black, @disk_space_used, 0.3);
 }
 
 .disk-space-display.free {
     background-color: @disk_space_free;
-    border-color: shade(@disk_space_free, 0.7);
+    border-color: mix(black, @disk_space_free, 0.3);
     color: @disk_space_free;
 }
 .disk-space-display.free.border {
-    color: shade(@disk_space_free, 0.7);
+    color: mix(black, @disk_space_free, 0.3);
 }
 
 /* As a workaround for GtkTreeView showing thick border above first row when
@@ -5249,7 +5249,7 @@ entry.search > * {
 }
 
 .conflict-row:hover {
-    background-color: shade(@conflict_bg, 0.9);
+    background-color: mix(black, @conflict_bg, 0.1);
 }
 
 .conflict-row:selected {
@@ -5259,7 +5259,7 @@ entry.search > * {
 
 /* Icon view */
 flowbox {
-  padding: 18px
+  padding: 18px;
 }
 
 flowboxchild {
@@ -5290,9 +5290,5 @@ flowboxchild:selected .icon-ui-labels-box {
 }
 
 flowboxchild:selected image {
-  -gtk-icon-effect: dim; /* GTK 3 only */
-  /* GTK 4 TODO: Replace previous line with the following one:
-  -gtk-icon-filter: opacity(0.5);
-  */
   -gtk-icon-shadow: 0px 0px @theme_selected_bg_color;
 }
